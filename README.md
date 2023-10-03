@@ -1,2 +1,2 @@
 # discord-clone
-This repository aims to provide learning experiences for mastering Node.js, Socket.IO, and WebRTC technologies.
+This repository aims to learn and master Node.js, Socket.IO, and WebRTC technologies.
