@@ -24,7 +24,6 @@ jobs:
 
       - name: Backend Build
         run: |
-          cd backend
           yarn install
           yarn build
         working-directory: ./backend
