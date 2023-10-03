@@ -32,7 +32,8 @@ jobs:
   code-review:
     runs-on: ubuntu-latest
     steps:
-      - uses: anc95/ChatGPT-CodeReview@main
+      - name: ChatGPT Ccode Reviewer
+        uses: anc95/ChatGPT-CodeReview@v1.0.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
