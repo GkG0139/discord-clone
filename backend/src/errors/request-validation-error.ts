@@ -1,6 +1,6 @@
-import { type ValidationError } from 'express-validator';
+import { ValidationError } from 'express-validator';
 
-import { type SerializedError } from '../types/errors';
+import { SerializedError } from '../types/errors';
 import { CustomError } from './custom-error';
 
 export class RequestValidationError extends CustomError {
