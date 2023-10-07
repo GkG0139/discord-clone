@@ -15,24 +15,25 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
 
-      - name: Backend Build
+      - name: Backend Install
         run: |
           yarn install
-          yarn build
         working-directory: ./backend
 
-  code-review:
-    runs-on: ubuntu-latest
-    steps:
-      - name: ChatGPT Ccode Reviewer
-        uses: anc95/ChatGPT-CodeReview@v1.0.11
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Backend Lint
+        run: |
+          yarn lint
+        working-directory: ./backend
+
+      - name: Build Node.js Project
+        if: ${{ success() }}
+        run: |
+          yarn build
+        working-directory: ./backend

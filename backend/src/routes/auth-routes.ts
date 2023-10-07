@@ -1,19 +1,19 @@
-import { Router } from 'express';
-import { body } from 'express-validator';
+import {Router} from 'express';
+import {body} from 'express-validator';
 
-import { handlePostLogin, handlePostRegistration } from '../controllers/auth';
-import { validateRequest } from '../middleware/validate-request';
+import {handlePostLogin, handlePostRegistration} from '../controllers/auth';
+import {validateRequest} from '../middleware/validate-request';
 
 const router = Router();
 
 const registerValidationMiddleware = [
   body('username')
     .trim()
-    .isLength({ min: 3, max: 12 })
+    .isLength({min: 3, max: 12})
     .withMessage('Username must be between 3 and 12 characters.'),
   body('password')
     .trim()
-    .isLength({ min: 6, max: 20 })
+    .isLength({min: 6, max: 20})
     .withMessage('Password must be between 4 and 20 characters.'),
   body('email').isEmail().withMessage('Please provide a valid email address.'),
 ];
@@ -36,4 +36,4 @@ router.post(
   handlePostLogin
 );
 
-export { router as authRouter };
+export {router as authRouter};
