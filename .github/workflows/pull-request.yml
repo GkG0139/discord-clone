@@ -22,15 +22,19 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Backend Build
+      - name: Backend Install
         run: |
           yarn install
-          yarn build
         working-directory: ./backend
 
       - name: Backend Lint
         run: |
           yarn lint
+        working-directory: ./backend
+
+      - name: Backend Build
+        run: |
+          yarn build
         working-directory: ./backend
 
   code-review:
