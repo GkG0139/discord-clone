@@ -28,6 +28,11 @@ jobs:
           yarn build
         working-directory: ./backend
 
+      - name: Backend Lint
+        run: |
+          yarn lint
+        working-directory: ./backend
+
   code-review:
     runs-on: ubuntu-latest
     steps:
