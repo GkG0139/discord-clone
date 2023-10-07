@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import mongoose, { Schema } from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
 interface IUser {
   mail: string;
@@ -9,7 +9,7 @@ interface IUser {
 
 const userSchema = new Schema<IUser>(
   {
-    mail: { type: String, unique: true },
+    mail: {type: String, unique: true},
     username: String,
     password: String,
   },

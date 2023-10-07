@@ -3,4 +3,4 @@ interface SerializedError {
   field?: string;
 }
 
-export type { SerializedError };
+export type {SerializedError};

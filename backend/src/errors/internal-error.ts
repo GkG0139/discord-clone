@@ -1,5 +1,5 @@
-import { SerializedError } from '../types/errors';
-import { CustomError } from './custom-error';
+import {SerializedError} from '../types/errors';
+import {CustomError} from './custom-error';
 
 export class InternalError extends CustomError {
   statusCode = 500;
@@ -11,6 +11,6 @@ export class InternalError extends CustomError {
   }
 
   serializeErrors(): SerializedError[] {
-    return [{ message: this.message }];
+    return [{message: this.message}];
   }
 }

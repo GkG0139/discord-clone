@@ -3,8 +3,8 @@ import 'express-async-errors';
 
 import mongoose from 'mongoose';
 
-import { app } from './app';
-import { API_PORT, MONGO_URI } from './utils/env';
+import {app} from './app';
+import {API_PORT, MONGO_URI} from './utils/env';
 
 async function init(): Promise<void> {
   try {

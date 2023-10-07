@@ -1,16 +1,16 @@
-import { Request, RequestHandler, Response } from 'express';
+import {Request, RequestHandler, Response} from 'express';
 import jwt from 'jsonwebtoken';
 
-import { BadRequestError } from '../../errors/bad-request-error';
-import { InternalError } from '../../errors/internal-error';
-import { User } from '../../models/user';
-import { JWT_EXPIRES_IN, JWT_SECRET } from '../../utils/env';
+import {BadRequestError} from '../../errors/bad-request-error';
+import {InternalError} from '../../errors/internal-error';
+import {User} from '../../models/user';
+import {JWT_EXPIRES_IN, JWT_SECRET} from '../../utils/env';
 
 const handlePostRegistration = (async (req: Request, res: Response) => {
   try {
-    const { mail, username, password } = req.body;
+    const {mail, username, password} = req.body;
 
-    const isUserExists = await User.exists({ mail: mail.toLowerCase() }).exec();
+    const isUserExists = await User.exists({mail: mail.toLowerCase()}).exec();
     if (isUserExists) {
       throw new BadRequestError('Email is already in use.');
     }
@@ -27,10 +27,10 @@ const handlePostRegistration = (async (req: Request, res: Response) => {
         username: user.username,
       },
       JWT_SECRET,
-      { expiresIn: JWT_EXPIRES_IN }
+      {expiresIn: JWT_EXPIRES_IN}
     );
 
-    req.session = { jwt: userJWT };
+    req.session = {jwt: userJWT};
 
     return res.status(201).send(user);
   } catch (error) {
@@ -38,4 +38,4 @@ const handlePostRegistration = (async (req: Request, res: Response) => {
   }
 }) as RequestHandler;
 
-export { handlePostRegistration };
+export {handlePostRegistration};
